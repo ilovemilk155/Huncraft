@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bejelentkezés</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            width: 300px;
+            margin: 0 auto;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <form id="loginForm">
+        <label for="uname"><b>Felhasználónév</b></label>
+        <input type="text" placeholder="Írja be a felhasználónevet" name="uname" required>
+
+        <label for="psw"><b>Jelszó</b></label>
+        <input type="password" placeholder="Írja be a jelszót" name="psw" required>
+
+        <button type="submit">Bejelentkezés</button>
+    </form>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var uname = event.target.uname.value;
+            var psw = event.target.psw.value;
+
+            var registeredUname = localStorage.getItem('username');
+            var registeredPsw = localStorage.getItem('password');
+
+            if (uname === registeredUname && psw === registeredPsw) {
+                alert('Sikeres bejelentkezés!');
+                
+                 window.location.href = 'index.html';
+            } else {
+                alert('Hibás felhasználónév vagy jelszó!');
+            }
+        });
+    </script>
+</body>
+</html>
